@@ -61,7 +61,7 @@ footer {
 }
 
 .current-weather strong {
-  color: #ffc107;
+  color: #ffa000;
 }
 
 .current-temperature {
@@ -87,6 +87,30 @@ footer {
   font-size: 28px;
   position: relative;
   top: -38px;
+}
+
+.today-min-max {
+  font-size: 14px;
+  margin: 10px;
+  text-align: center;
+  position: relative;
+  left: 20px;
+}
+
+.today-min {
+  background-color: #1976d2;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  width: 50px;
+}
+
+.today-max {
+  background-color: #e53935;
+  border-radius: 3px;
+  color: #fff;
+  display: inline-block;
+  width: 50px;
 }
 
 #city-input {
