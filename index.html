@@ -4,14 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Emma's Weather App</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="search"></div>
-      <div class="current-weather">
-        <h1>Hello there!</h1>
-      </div>
-      <div class="forecast"></div>
+      <header>
+        <form id="city-search">
+          <input
+            type="text"
+            id="city-input"
+            placeholder="Enter a city ..."
+            autocomplete="off"
+            autofocus="on"
+            required
+          />
+          <input type="submit" id="submit-button" value="Search" />
+        </form>
+      </header>
+      <main>
+        <div class="current-weather">
+          <h1>Hello there!</h1>
+        </div>
+        <div class="forecast"></div>
+      </main>
       <footer>
         This project was coded by
         <a href="https://github.com/emmaa1009-collab" target="_blank"
@@ -31,5 +47,6 @@
         >
       </footer>
     </div>
+    <script src="src/app.js"></script>
   </body>
 </html>
