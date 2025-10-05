@@ -42,14 +42,13 @@ function search(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
 
+  let ApiKey = `b6b9teed60a3b1boe04c53c54d1f6c3d`;
   //Current details
-  let currentApiKey = `b6b9teed60a3b1boe04c53c54d1f6c3d`;
-  let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${currentApiKey}`;
+  let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${ApiKey}&units=metric`;
   axios.get(currentApiUrl).then(displayCurrentResults);
 
   //Forecast details
-  let forecastApiKey = `b6b9teed60a3b1boe04c53c54d1f6c3d`;
-  let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${forecastApiKey}`;
+  let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${ApiKey}&units=metric`;
   axios.get(forecastApiUrl).then(displayForecastResults);
 }
 
@@ -58,6 +57,11 @@ function displayCurrentResults(response) {
   let cityElement = document.querySelector(".current-city");
   let searchCity = response.data.city;
   cityElement.innerHTML = searchCity;
+
+  //Update country
+  let countryElement = document.querySelector(".current-country");
+  let searchCountry = response.data.country;
+  countryElement.innerHTML = searchCountry;
 
   //Update condition
   let currentConditionElement = document.querySelector(".current-conditions");
@@ -86,7 +90,11 @@ function displayForecastResults(response) {
   console.log(response.data);
 }
 
-//getDayTime();
+function displayCelcius() {}
+
+function displayFarenheit() {}
+
+getDayTime();
 
 let searchForm = document.querySelector("#city-search");
 searchForm.addEventListener("submit", search);
