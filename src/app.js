@@ -38,7 +38,7 @@ function displayDayTime(dayTime) {
   currentDayTime.innerHTML = `${dayTime}`;
 }
 
-function search(event) {
+function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
 
@@ -97,4 +97,4 @@ function displayFarenheit() {}
 getDayTime();
 
 let searchForm = document.querySelector("#city-search");
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", searchCity);
