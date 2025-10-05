@@ -97,20 +97,21 @@ footer {
   left: 20px;
 }
 
-.today-min {
-  background-color: #1976d2;
-  border-radius: 3px;
-  color: #fff;
+.today-range {
   display: inline-block;
   width: 50px;
 }
 
-.today-max {
+.minimum-temperature {
+  background-color: #1976d2;
+  border-radius: 3px;
+  color: #fff;
+}
+
+.maximum-temperature {
   background-color: #e53935;
   border-radius: 3px;
   color: #fff;
-  display: inline-block;
-  width: 50px;
 }
 
 #city-input {
