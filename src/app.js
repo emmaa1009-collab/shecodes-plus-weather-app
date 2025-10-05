@@ -1,47 +1,11 @@
-function getDayTime() {
-  let now = new Date();
-
-  let weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-
-  let day = weekdays[now.getDay()];
-
-  let hours = now.getHours();
-  let minutes = now.getMinutes();
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let time = `${hours}:${minutes}`;
-
-  let dayTime = `${day} ${time}`;
-
-  displayDayTime(dayTime);
-}
-
-function displayDayTime(dayTime) {
-  let currentDayTime = document.querySelector(".current-date-time");
-
-  currentDayTime.innerHTML = `${dayTime}`;
-}
-
-function searchCity(event) {
+function clickButton(event) {
   event.preventDefault();
   let city = document.querySelector("#city-input").value;
 
+  searchCity(city);
+}
+
+function searchCity(city) {
   let ApiKey = `b6b9teed60a3b1boe04c53c54d1f6c3d`;
   //Current details
   let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${ApiKey}&units=metric`;
@@ -88,7 +52,47 @@ function displayCurrentResults(response) {
   let searchTempValue = Math.round(response.data.temperature.current);
   currentTempElement.innerHTML = searchTempValue;
 
-  console.log(response.data);
+  getDayTime();
+}
+
+function getDayTime() {
+  let now = new Date();
+
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  let day = weekdays[now.getDay()];
+
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let time = `${hours}:${minutes}`;
+
+  let dayTime = `${day} ${time}`;
+
+  displayDayTime(dayTime);
+}
+
+function displayDayTime(dayTime) {
+  let currentDayTime = document.querySelector(".current-date-time");
+
+  currentDayTime.innerHTML = `${dayTime}`;
 }
 
 function displayForecastResults(response) {
@@ -99,7 +103,7 @@ function displayCelcius() {}
 
 function displayFarenheit() {}
 
-getDayTime();
+searchCity("Sydney");
 
 let searchForm = document.querySelector("#city-search");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", clickButton);
