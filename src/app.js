@@ -78,6 +78,8 @@ function displayCurrentResults(response) {
   let currentTempElement = document.querySelector(".current-temperature-value");
   let searchTempValue = Math.round(response.data.temperature.current);
   currentTempElement.innerHTML = searchTempValue;
+
+  console.log(response.data);
 }
 
 function displayForecastResults(response) {

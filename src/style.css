@@ -97,16 +97,10 @@ footer {
   top: -38px;
 }
 
-.today-min-max {
-  font-size: 14px;
-  margin: 10px;
-  text-align: center;
-  position: relative;
-  left: 20px;
-}
-
-.today-range {
+.forecast-range {
   display: inline-block;
+  font-size: 14px;
+  margin: 5px;
   width: 50px;
 }
 
@@ -123,10 +117,10 @@ footer {
 }
 
 #city-input {
-  background-color: #f9f7fe;
+  background-color: #eaf6ff;
   border: none;
   border-radius: 5px;
-  color: rgba(77, 166, 255, 0.8);
+  color: #546e7a;
   font-size: 16px;
   padding: 20px;
   width: 75%;
