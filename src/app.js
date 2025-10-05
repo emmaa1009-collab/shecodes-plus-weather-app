@@ -78,6 +78,11 @@ function displayCurrentResults(response) {
   let searchWind = response.data.wind.speed;
   currentWindElement.innerHTML = searchWind;
 
+  //Update icon
+  let currentIconElement = document.querySelector(".current-temperature-icon");
+  let searchIcon = response.data.condition.icon_url;
+  currentIconElement.innerHTML = `<img src=${searchIcon}></img>`;
+
   //Update temperature
   let currentTempElement = document.querySelector(".current-temperature-value");
   let searchTempValue = Math.round(response.data.temperature.current);
