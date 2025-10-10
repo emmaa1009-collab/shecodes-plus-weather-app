@@ -99,23 +99,50 @@ footer {
   top: -18px;
 }
 
-.forecast-range {
-  display: inline-block;
-  font-size: 14px;
-  margin: 5px;
-  width: 50px;
+.forecast {
+  display: flex;
+  justify-content: space-around;
+}
+
+.forecast-day {
+  text-align: center;
+  width: 150px;
+}
+
+.forecast-date {
+  background-color: #0d47a1;
+  border-radius: 3px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 2px 0;
+  width: 95%;
+}
+
+.forecast-temperatures {
+  display: flex;
+  justify-content: center;
 }
 
 .minimum-temperature {
   background-color: #1976d2;
   border-radius: 3px;
   color: #fff;
+  font-size: 14px;
+  margin: 1px;
+  padding: 2px 0;
+  text-align: center;
+  width: 50px;
 }
 
 .maximum-temperature {
   background-color: #e53935;
   border-radius: 3px;
   color: #fff;
+  font-size: 14px;
+  margin: 1px;
+  padding: 2px 0;
+  text-align: center;
+  width: 50px;
 }
 
 #city-input {
