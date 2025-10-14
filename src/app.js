@@ -9,14 +9,14 @@ function searchCity(city) {
   let ApiKey = `b6b9teed60a3b1boe04c53c54d1f6c3d`;
   //Current details
   let currentApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${ApiKey}&units=metric`;
-  axios.get(currentApiUrl).then(displayCurrentResults);
+  axios.get(currentApiUrl).then(displayCurrent);
 
   //Forecast details
   let forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${ApiKey}&units=metric`;
-  axios.get(forecastApiUrl).then(displayForecastResults);
+  axios.get(forecastApiUrl).then(displayForecast);
 }
 
-function displayCurrentResults(response) {
+function displayCurrent(response) {
   //Update city
   let cityElement = document.querySelector(".current-city");
   let searchCity = response.data.city;
@@ -69,7 +69,7 @@ function getDayTime() {
     "Sunday",
   ];
 
-  let day = weekdays[now.getDay()];
+  let today = weekdays[now.getDay()];
 
   let hours = now.getHours();
   let minutes = now.getMinutes();
@@ -84,7 +84,7 @@ function getDayTime() {
 
   let time = `${hours}:${minutes}`;
 
-  let dayTime = `${day} ${time}`;
+  let dayTime = `${today} ${time}`;
 
   displayDayTime(dayTime);
 }
@@ -95,8 +95,28 @@ function displayDayTime(dayTime) {
   currentDayTime.innerHTML = `${dayTime}`;
 }
 
-function displayForecastResults(response) {
+function displayForecast(response) {
   console.log(response.data);
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+          <div class="forecast-day">
+            <div class="forecast-date">${day}</div>
+            <div class="forecast-icon">icon here</div>
+            <div class="forecast-temperatures">
+              <div class="minimum-temperature">9°C</div>
+              <div class="maximum-temperature">18°C</div>
+            </div>
+          </div>
+          `;
+  });
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
 }
 
 function displayCelcius() {}
