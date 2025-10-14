@@ -19,38 +19,31 @@ function searchCity(city) {
 function displayCurrent(response) {
   //Update city
   let cityElement = document.querySelector(".current-city");
-  let searchCity = response.data.city;
-  cityElement.innerHTML = searchCity;
+  cityElement.innerHTML = response.data.city;
 
   //Update country
   let countryElement = document.querySelector(".current-country");
-  let searchCountry = response.data.country;
-  countryElement.innerHTML = searchCountry;
+  countryElement.innerHTML = response.data.country;
 
   //Update condition
   let currentConditionElement = document.querySelector(".current-conditions");
-  let searchCondition = response.data.condition.description;
-  currentConditionElement.innerHTML = searchCondition;
+  currentConditionElement.innerHTML = response.data.condition.description;
 
   //Update humidity
   let currentHumidityElement = document.querySelector(".current-humidity");
-  let searchHumidity = response.data.temperature.humidity;
-  currentHumidityElement.innerHTML = searchHumidity;
+  currentHumidityElement.innerHTML = response.data.temperature.humidity;
 
   //Update wind
   let currentWindElement = document.querySelector(".current-wind");
-  let searchWind = response.data.wind.speed;
-  currentWindElement.innerHTML = searchWind;
+  currentWindElement.innerHTML = response.data.wind.speed;
 
   //Update icon
   let currentIconElement = document.querySelector(".current-temperature-icon");
-  let searchIcon = response.data.condition.icon_url;
-  currentIconElement.innerHTML = `<img src=${searchIcon}></img>`;
+  currentIconElement.innerHTML = `<img src=${response.data.condition.icon_url}></img>`;
 
   //Update temperature
   let currentTempElement = document.querySelector(".current-temperature-value");
-  let searchTempValue = Math.round(response.data.temperature.current);
-  currentTempElement.innerHTML = searchTempValue;
+  currentTempElement.innerHTML = Math.round(response.data.temperature.current);
 
   getDayTime();
 }
