@@ -62,7 +62,25 @@ function getDayTime() {
     "Sunday",
   ];
 
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
   let today = weekdays[now.getDay()];
+
+  let date = now.getDate();
+  let month = months[now.getMonth()];
 
   let hours = now.getHours();
   let minutes = now.getMinutes();
@@ -77,7 +95,7 @@ function getDayTime() {
 
   let time = `${hours}:${minutes}`;
 
-  let dayTime = `${today} ${time}`;
+  let dayTime = `${today}, ${date} ${month}, ${time}`;
 
   displayDayTime(dayTime);
 }
@@ -88,25 +106,56 @@ function displayDayTime(dayTime) {
   currentDayTime.innerHTML = `${dayTime}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let formattedDay = "";
+
+  formattedDay = `${days[date.getDay()]} ${date.getDate()} ${
+    months[date.getMonth()]
+  }`;
+
+  return formattedDay;
+}
+
 function displayForecast(response) {
   console.log(response.data);
 
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
           <div class="forecast-day">
-            <div class="forecast-date">${day}</div>
-            <div class="forecast-icon">icon here</div>
+            <div class="forecast-date">${formatDay(day.time)}</div>
+            <div class="forecast-icon">
+            <img src=${day.condition.icon_url}></img></div>
             <div class="forecast-temperatures">
-              <div class="minimum-temperature">9°C</div>
-              <div class="maximum-temperature">18°C</div>
+              <div class="minimum-temperature">
+              ${Math.round(day.temperature.minimum)}°C</div>
+              <div class="maximum-temperature">
+              ${Math.round(day.temperature.maximum)}°C</div>
             </div>
+            <div class="forecast-conditions">${day.condition.description}</div>
           </div>
           `;
+    }
   });
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;

@@ -102,10 +102,12 @@ footer {
 .forecast {
   display: flex;
   justify-content: space-around;
+  margin: 20px 0;
 }
 
 .forecast-day {
   text-align: center;
+  font-size: 14px;
   width: 150px;
 }
 
@@ -118,6 +120,10 @@ footer {
   width: 95%;
 }
 
+.forecast-icon img {
+  width: 50%;
+}
+
 .forecast-temperatures {
   display: flex;
   justify-content: center;
@@ -127,7 +133,6 @@ footer {
   background-color: #1976d2;
   border-radius: 3px;
   color: #fff;
-  font-size: 14px;
   margin: 1px;
   padding: 2px 0;
   text-align: center;
@@ -138,11 +143,15 @@ footer {
   background-color: #e53935;
   border-radius: 3px;
   color: #fff;
-  font-size: 14px;
   margin: 1px;
   padding: 2px 0;
   text-align: center;
   width: 50px;
+}
+
+.forecast-conditions {
+  color: #546e7a;
+  margin-top: 10px;
 }
 
 #city-input {
